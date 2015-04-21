@@ -4,28 +4,10 @@
     /* ---------------------------------- Local Variables ---------------------------------- */
     var service = new EmployeeService();
     service.initialize().done(function () {
-        console.log("Service initialized");
+        renderHomeView();
     });
 
     /* --------------------------------- Event Registration -------------------------------- */
-    document.addEventListener('deviceready', function () {
-        if (navigator.notification) {
-            window.alert = function (message) {
-                navigator.notification.alert(
-                    message,
-                    null,
-                    "Workshop",
-                    'OK'
-                );
-            };
-        }
-        FastClick.attach(document.body);
-    }, false);
-
-    $('.search-key').on('keyup', findByName);
-    $('.help-btn').on('click', function() {
-        alert("Employee Directory v3.4");
-    });
 
     /* ---------------------------------- Local Functions ---------------------------------- */
     function findByName() {
@@ -38,6 +20,15 @@
                 $('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + ' ' + e.lastName + '</a></li>');
             }
         });
+    }
+
+    function renderHomeView() {
+        var html =
+          "<h1>Directory</h1>" +
+          "<input class='search-key' type='search' placeholder='Enter name' />" +
+          "<ul class='employee-list'></ul>";
+        $('body').html(html);
+        $('.search-key').on('keyup', findByName);
     }
 
 }());
