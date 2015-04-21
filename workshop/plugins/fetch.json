@@ -10,5 +10,11 @@
             "type": "registry",
             "id": "org.apache.cordova.console"
         }
+    },
+    "org.apache.cordova.dialogs": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.dialogs"
+        }
     }
 }

@@ -8,6 +8,19 @@
     });
 
     /* --------------------------------- Event Registration -------------------------------- */
+    document.addEventListener('deviceready', function () {
+        if (navigator.notification) {
+            window.alert = function (message) {
+                navigator.notification.alert(
+                    message,
+                    null,
+                    "Workshop",
+                    'OK'
+                );
+            };
+        }
+    }, false);
+
     $('.search-key').on('keyup', findByName);
     $('.help-btn').on('click', function() {
         alert("Employee Directory v3.4");
